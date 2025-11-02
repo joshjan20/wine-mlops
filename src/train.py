@@ -19,7 +19,7 @@ MODEL_DIR = "models/wine_model"           # Local model output
 EXPERIMENT_NAME = "Wine-Classification"   # MLflow experiment name
 
 # MLflow tracking URI (shared server or local)
-mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://127.0.0.1:5000"))
+mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://23.22.232.131/:5000"))
 mlflow.set_experiment(EXPERIMENT_NAME)
 
 # ===========================
