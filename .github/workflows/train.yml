@@ -30,7 +30,7 @@ jobs:
 
       - name: Run training
         env:
-          MLFLOW_TRACKING_URI: "http://mlflow.company.com:5000"
+          MLFLOW_TRACKING_URI: "http://23.22.232.131/:5000"
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
