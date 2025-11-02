@@ -1,0 +1,12 @@
+# DVC cache
+.dvc/cache/
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.egg-info/
+dist/
+build/

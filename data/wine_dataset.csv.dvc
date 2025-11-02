@@ -1,4 +1,5 @@
 outs:
-- path: data/wine_dataset.csv
-  md5: 2925c4a8cd201c79d97d3d283429ef23
+- md5: 2925c4a8cd201c79d97d3d283429ef23
   size: 12261
+  hash: md5
+  path: wine_dataset.csv
