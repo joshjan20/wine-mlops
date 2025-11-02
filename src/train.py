@@ -19,7 +19,7 @@ MODEL_DIR = "models/wine_model"           # Local model output
 EXPERIMENT_NAME = "Wine-Classification"   # MLflow experiment name
 
 # MLflow tracking URI (shared server or local)
-mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://23.22.232.131/:5000"))
+mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://23.22.232.131:5000"))
 mlflow.set_experiment(EXPERIMENT_NAME)
 
 # ===========================
@@ -92,5 +92,5 @@ with mlflow.start_run() as run:
     print(f"📊 Accuracy: {acc:.3f}, F1: {f1:.3f}, Precision: {precision:.3f}, Recall: {recall:.3f}")
     print(f"🔗 View run in MLflow UI: {mlflow.get_tracking_uri()}")
 
-    mlflow.set_tracking_uri("http://23.22.232.131/:5000")  # replace with your EC2 public IP
+    mlflow.set_tracking_uri("http://23.22.232.131:5000")  # replace with your EC2 public IP
     mlflow.set_experiment("Wine-Classification")
