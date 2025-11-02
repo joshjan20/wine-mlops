@@ -1,3 +1,3 @@
 outs:
-- path: data/wine_dataset.csv
+- path: wine_dataset.csv
   md5: 2925c4a8cd201c79d97d3d283429ef23
