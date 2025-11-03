@@ -62,19 +62,19 @@ jobs:
 
       # 6️⃣ Build Docker image
       - name: Build Docker image
-        run: docker build -t mydockerhubusername/wine-api:${{ github.sha }} .
+        run: docker build -t dockerjrp/wine-api:${{ github.sha }} .
 
       # 7️⃣ Push Docker image
       - name: Push Docker image
         run: |
-          docker tag mydockerhubusername/wine-api:${{ github.sha }} mydockerhubusername/wine-api:latest
-          docker push mydockerhubusername/wine-api:${{ github.sha }}
-          docker push mydockerhubusername/wine-api:latest
+          docker tag dockerjrp/wine-api:${{ github.sha }} dockerjrp/wine-api:latest
+          docker push dockerjrp/wine-api:${{ github.sha }}
+          docker push dockerjrp/wine-api:latest
 
       # 8️⃣ Optional deploy
       - name: Deploy
         if: github.ref == 'refs/heads/main'
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }} \
-          "docker pull mydockerhubusername/wine-api:latest && docker-compose -f docker-compose.prod.yml up -d"
+          "docker pull dockerjrp/wine-api:latest && docker-compose -f docker-compose.prod.yml up -d"
 
