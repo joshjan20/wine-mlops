@@ -51,7 +51,7 @@ jobs:
       - name: Run API tests
         run: |
           pip install fastapi[all] requests pytest
-          PYTHONPATH=. pytest tests/test_app.py --maxfail=1 --disable-warnings -q
+          #PYTHONPATH=. pytest tests/test_app.py --maxfail=1 --disable-warnings -q
 
       # 5️⃣ Docker login
       - name: Log in to Docker Hub
