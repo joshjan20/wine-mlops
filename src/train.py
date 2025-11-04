@@ -77,7 +77,7 @@ with mlflow.start_run() as run:
     mlflow.log_artifact(cm_path)
 
     # ===========================
-    #  SAVE MODEL LOCALLY
+    #  SAVE MODEL LOCALLY AND AWS S3
     # ===========================
     #os.makedirs("models", exist_ok=True)
     #mlflow.sklearn.save_model(model, MODEL_DIR)
