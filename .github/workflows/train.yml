@@ -71,10 +71,10 @@ jobs:
           docker push dockerjrp/wine-api:${{ github.sha }}
           docker push dockerjrp/wine-api:latest
 
-      # 8️⃣ Optional deploy
-      - name: Deploy
-        if: github.ref == 'refs/heads/main'
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }} \
-          "docker pull dockerjrp/wine-api:latest && docker-compose -f docker-compose.prod.yml up -d"
+      # 8️⃣ Optional deploy - it can be production EC2 server or any host
+      #- name: Deploy
+        #if: github.ref == 'refs/heads/main'
+        #run: |
+          #ssh -o StrictHostKeyChecking=no ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }} \
+          #"docker pull dockerjrp/wine-api:latest && docker-compose -f docker-compose.prod.yml up -d"
 
