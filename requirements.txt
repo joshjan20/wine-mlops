@@ -4,8 +4,7 @@ numpy==1.25.2
 mlflow==2.5.0
 dvc[s3]==2.50.0
 seaborn
-fastapi[all]
-uvicorn
-
+fastapi==0.111.1
+uvicorn[standard]==0.23.2
 
 
