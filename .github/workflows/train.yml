@@ -70,6 +70,23 @@ jobs:
           docker tag dockerjrp/wine-api:${{ github.sha }} dockerjrp/wine-api:latest
           docker push dockerjrp/wine-api:${{ github.sha }}
           docker push dockerjrp/wine-api:latest
+      
+      - name: Deploy to Dev EC2
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.DEV_HOST }}
+          username: ${{ secrets.DEV_USER }}
+          key: ${{ secrets.DEV_SSH_KEY }}
+          script: |
+            echo "Stopping old container if exists..."
+            docker stop wine-api || true
+            docker rm wine-api || true
+            echo "Pulling latest Docker image..."
+            docker pull dockerjrp/wine-api:latest
+            echo "Starting new container..."
+            docker run -d --name wine-api -p 5000:5000 dockerjrp/wine-api:latest
+            echo "Deployment complete! Running at port 5000"
+
 
       # 8️⃣ Optional deploy - it can be production EC2 server or any host
       #- name: Deploy
@@ -77,4 +94,23 @@ jobs:
         #run: |
           #ssh -o StrictHostKeyChecking=no ${{ secrets.PROD_USER }}@${{ secrets.PROD_HOST }} \
           #"docker pull dockerjrp/wine-api:latest && docker-compose -f docker-compose.prod.yml up -d"
+      
+      #  Optional configure aws
+      #- name: Configure AWS Credentials
+      #  uses: aws-actions/configure-aws-credentials@v3
+      #  with:
+      #    aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #    aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #    aws-region: us-east-1
+      
+      # 10 Optional deploy - it can be production EC2 server or any host or ecr
+      #- name: Login to Amazon ECR
+      #  id: login-ecr
+      #  uses: aws-actions/amazon-ecr-login@v2
 
+      # 11 Optional deploy to ecr
+      #- name: Build and Push Docker image
+      #  run: |
+      #    docker build -t wine-api .
+      #    docker tag wine-api:latest ${{ steps.login-ecr.outputs.registry }}/wine-api:latest
+      #    docker push ${{ steps.login-ecr.outputs.registry }}/wine-api:latest
