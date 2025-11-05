@@ -7,7 +7,7 @@ mlflow.set_tracking_uri("http://23.22.232.131:5000")
 EXPERIMENT_NAME = "Wine-Classification"
 
 # Load model from MLflow Model Registry or local folder
-MODEL_PATH = "models/wine_model"  # local path
+#MODEL_PATH = "models/wine_model"  # local path
 # or from MLflow Registry:
 # MODEL_PATH = "models:/wine-classifier/Production"
 

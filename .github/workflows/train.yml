@@ -84,7 +84,12 @@ jobs:
             echo "Pulling latest Docker image..."
             docker pull dockerjrp/wine-api:latest
             echo "Starting new container..."
-            docker run -d --name wine-api -p 5000:5000 dockerjrp/wine-api:latest
+            sudo docker run -d \
+            --name wine-api \
+            -p 5000:5000 \
+            -e AWS_ACCESS_KEY_ID=<your_key> \
+            -e AWS_SECRET_ACCESS_KEY=<your_secret> \
+            dockerjrp/wine-api:latest
             echo "Deployment complete! Running at port 5000"
 
 
