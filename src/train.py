@@ -79,8 +79,8 @@ with mlflow.start_run() as run:
     # ===========================
     #  SAVE MODEL LOCALLY AND AWS S3
     # ===========================
-    #os.makedirs("models", exist_ok=True)
-    #mlflow.sklearn.save_model(model, MODEL_DIR)
+    os.makedirs("models", exist_ok=True)
+    mlflow.sklearn.save_model(model, MODEL_DIR)
     mlflow.sklearn.log_model(model, artifact_path="wine_model")
 
     # ===========================
