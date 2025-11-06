@@ -55,5 +55,11 @@ class WineFeatures(BaseModel):
 @app.post("/predict")
 def predict(data: WineFeatures):
     df = pd.DataFrame([data.dict()])
+
+    # ✅ Rename to match training column exactly
+    df.rename(columns={
+        "od280_od315_of_diluted_wines": "od280/od315_of_diluted_wines"
+    }, inplace=True)
+
     prediction = model.predict(df)[0]
     return {"prediction": int(prediction)}
