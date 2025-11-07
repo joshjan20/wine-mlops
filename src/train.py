@@ -44,7 +44,7 @@ with mlflow.start_run() as run:
     max_depth = 6
     mlflow.log_param("n_estimators", n_estimators)
     mlflow.log_param("max_depth", max_depth)
-    mlflow.log_param("test_param", 5)
+    mlflow.log_param("random_state", 2)
 
     # Train model
     model = RandomForestClassifier(n_estimators=n_estimators, max_depth=max_depth, random_state=42)
